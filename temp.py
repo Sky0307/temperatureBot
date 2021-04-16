@@ -9,8 +9,8 @@ if __name__ == "__main__":
 
     A = True
     try:
-        driver.find_elements_by_id('pgContent1_uiLoginid')[0].send_keys('1004365')
-        driver.find_elements_by_id('pgContent1_uiPassword')[0].send_keys('Testing12#')
+        driver.find_elements_by_id('pgContent1_uiLoginid')[0].send_keys('studentID')
+        driver.find_elements_by_id('pgContent1_uiPassword')[0].send_keys('Password')
         time.sleep(10)
         driver.find_elements_by_id('pgContent1_btnLogin')[0].click()
 
