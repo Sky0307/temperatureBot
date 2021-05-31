@@ -1,18 +1,26 @@
 from selenium import webdriver
 from selenium.webdriver.support.ui import Select
+from dotenv import load_dotenv
 import time
+import os
 
 if __name__ == "__main__":
     chrome_driver_binary = "/usr/local/bin/chromedriver"
     driver = webdriver.Chrome(chrome_driver_binary)
     driver.get('https://tts.sutd.edu.sg/')
 
+    BASEDIR = os.path.abspath(os.path.dirname(__file__))
+    load_dotenv(os.path.join(BASEDIR, '.env'))
+
+    PASSWORD = os.getenv('PASSWORD')
+    ID = os.getenv('ID')
+
     A = True
     try:
-        driver.find_elements_by_id('pgContent1_uiLoginid')[0].send_keys('studentID')
-        driver.find_elements_by_id('pgContent1_uiPassword')[0].send_keys('Password')
+        driver.find_elements_by_id('pgContent1_uiLoginid')[0].send_keys(ID)
+        driver.find_elements_by_id('pgContent1_uiPassword')[0].send_keys(PASSWORD)
         time.sleep(10)
-        driver.find_elements_by_id('pgContent1_btnLogin')[0].click()
+
 
         #Daily Declaration
         driver.get('https://tts.sutd.edu.sg/tt_daily_dec_user.aspx')
